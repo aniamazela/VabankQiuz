@@ -1,6 +1,120 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Question</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/free-photo/blue-steam-black-background_172251-548.jpg?w=740");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+
+        #box {
+            border: 1px solid;
+            padding: 25px 50px;
+            background-color: #d2faed;
+            box-shadow: 0px 0px 50px 0px;
+        }
+
+
+        table {
+            width: 100%;
+            text-align: center;
+        }
+
+
+        .first {
+            width: 50%;
+            height: 25%;
+            color: green;
+            background-color: black;
+            border: 15px solid DodgerBlue;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 15px;
+        }
+
+        .second {
+            width: 30%;
+            background-color: DodgerBlue;
+            padding-bottom: 100px;
+            color: red;
+            font-weight: bold;
+            font-size: 30px;
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container text-center" id="box">
+        <table>
+            <tr align="center">
+                <td>
+                    <img src="https://pic.onlinewebfonts.com/svg/img_513928.png" width="150" height="105">
+                    <div class="first"> $$$$</div>
+                    <div class="second"> Player1</div>
+                </td>
+                <td>
+                    <img src="https://pic.onlinewebfonts.com/svg/img_513928.png" width="150" height="105">
+                    <div class="first"> $$$$</div>
+                    <div class="second"> Player2</div>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+        <h1>Pytanie</h1>
+        <h1 th:text="'Kategoria: ' + ${question.nameCategory}+ ' Nagorda: ' +${question.priceCategory}"></h1>
+
+
+        <h1 th:text="${question.questionText}"></h1>
+
+        <table style="width:100%">
+            <tr>
+                <td style="width:50%"><button  style="width:85%">
+                        <a th:text="${question.answer1Text}"
+                            th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/1'"></a><br />
+                    </button> </td>
+                <td style="width:50%"><button  style="width:85%">
+                        <a th:text="${question.answer2Text}"
+                            th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/2'"></a><br />
+                    </button></td>
+            </tr>
+            <tr>
+                <td style="width:50%"><button  style="width:85%">
+                        <a th:text="${question.answer3Text}"
+                            th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/3'"></a><br />
+                    </button></td>
+                    <td style="width:50%"><button  style="width:85%">
+                        <a th:text="${question.answer4Text}"
+                            th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/4'"></a><br />
+                    </button> </td>
+
+            </tr>
+
+
+
+
+        </table>
+    </div>
+</body>
+
+</html>
 <head>
     <meta charset="ISO-8859-1">
     <title>Question</title>
