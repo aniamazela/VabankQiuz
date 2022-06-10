@@ -1,5 +1,6 @@
 package pl.vabank.game.controllers;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -23,9 +24,36 @@ public class RoomController {
 
     Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-
     @Autowired
     private RoomRepository roomRepo;
+
+    @GetMapping("/game_room_finish/{id}")
+    public String gameRoomFinish(@PathVariable("id") Long id, Model model) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // osoba która dochodzi
+        // do pokoju
+        Object currentPrincipalObject = authentication.getPrincipal();
+        UserData currentUser = ((CustomUserDetails) currentPrincipalObject).getUser();
+
+        RoomData room = null;// pobieranie room
+        try {
+            room = roomRepo.getById(id);
+        } catch (Exception e) {
+            return "wrong_room";}
+        if(currentUser.getId().equals(room.getPlayer1().getId())){
+            int finish=room.getActivRoom();
+            finish=finish&2;//operacja bitowa
+            room.setActivRoom(finish);
+            roomRepo.saveAndFlush(room);//zapisanie do bazy
+        }else if(room.getPlayer2()!=null && currentUser.getId().equals(room.getPlayer2().getId())){
+            int finish=room.getActivRoom();
+            finish=finish&1;//operacja bitowa
+            room.setActivRoom(finish);
+            roomRepo.saveAndFlush(room);//zapisanie do bazy
+        }
+        return "redirect:/rooms";
+      
+    }
 
     @GetMapping("/game_room/{id}")
     public String gameRoom(@PathVariable("id") Long id, Model model) {
@@ -35,8 +63,7 @@ public class RoomController {
         Object currentPrincipalObject = authentication.getPrincipal();
         UserData currentUser = ((CustomUserDetails) currentPrincipalObject).getUser();
 
-
-        RoomData room=null;
+        RoomData room = null;// pobieranie room
         try {
             room = roomRepo.getById(id);
         } catch (Exception e) {
@@ -44,18 +71,24 @@ public class RoomController {
         }
 
         Boolean isValid = false;
-        if (room.getPlayer1() != null && room.getPlayer1().getId() == currentUser.getId())
+        if (room.getPlayer1() != null && room.getPlayer1().getId() == currentUser.getId()) {
             isValid = true;
-        
-        else if (room.getPlayer2() != null && room.getPlayer2().getId() == currentUser.getId())
+
+            model.addAttribute("currentPlayerPoints", room.getPlayer1Points());// wyświetl punkty
+
+        }
+
+        else if (room.getPlayer2() != null && room.getPlayer2().getId() == currentUser.getId()) {
             isValid = true;
+            model.addAttribute("currentPlayerPoints", room.getPlayer2Points());// wyświetl punkty
+        }
+
         else if (room.getPlayer2() == null) {
             room.setPlayer2(currentUser);
             roomRepo.saveAndFlush(room);
             isValid = true;
 
         }
-    
 
         if (isValid) {
             model.addAttribute("question1", room.getQuestion1());
@@ -85,10 +118,38 @@ public class RoomController {
             model.addAttribute("question25", room.getQuestion25());
             model.addAttribute("room", room);
 
+            int value = -1;
+            if (currentUser.getId().equals(room.getPlayer1().getId())) {
+                value = 2;
+            } else if (room.getPlayer2()!=null && currentUser.getId().equals(room.getPlayer2().getId())) {
+                value = 1;
+            }
+
+            try {
+                for (int i = 1; i <= 25; i++) {
+                    calcCacheActive(i, model, currentUser, room, value);
+                }
+            } catch (Exception e) {
+            }
+
             return "game_room";
 
         }
 
         return "wrong_room";
+    }
+
+    // met oznacza ActiveQuestion
+    private void calcCacheActive(int index, Model model, UserData currentUser, RoomData room, int value)
+            throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
+            SecurityException {
+        // if(currentUser.getId().equals(room.getPlayer1().getId())){
+        if ((int) (room.getClass().getMethod("getActiveQuestion" + index).invoke(room)) == value) {
+            // if(room.getActiveQuestion1()==value){
+            model.addAttribute("cacheActive" + index, true);
+        } else {
+            model.addAttribute("cacheActive" + index, false);
+        }
+        // }
     }
 }
