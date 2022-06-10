@@ -89,6 +89,7 @@
 
 
     <div>
+            <!-- <div class="container text-center"> -->
         <table>
             <tr align="center">
                 <td rowspan="3" width="25%"> <br>
@@ -118,13 +119,14 @@
                 <td width="40%" style="background-color: rgb(209, 213, 217);">
                     <h3 th:text="${question.questionText}" style="font-weight: bolder; font-style: italic;"></h3>
                     <a th:text="${question.answer1Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/1'"
-                        id="buttonA" class="btn btn-primary"></a><br />
-                    <a th:text="${question.answer2Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/2'"
-                        id="buttonB" class="btn btn-primary"></a><br />
+                        class="btn btn-primary"></a><br />
+                    <!-- $-blok kodu javowego które się wykonyje @-automatyzuje adres url to co wyświetla sie na górze str www -->
+                        <a th:text="${question.answer2Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/2'"
+                        class="btn btn-primary"></a><br />
                     <a th:text="${question.answer3Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/3'"
-                        id="buttonC" class="btn btn-primary"></a><br />
+                        class="btn btn-primary"></a><br />
                     <a th:text="${question.answer4Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/4'"
-                        id="buttonD" class="btn btn-primary"></a><br />
+                        class="btn btn-primary"></a><br />
                 </td>
             </tr>
             <tr>
