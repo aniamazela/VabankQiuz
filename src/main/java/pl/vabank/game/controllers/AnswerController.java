@@ -82,7 +82,7 @@ public class AnswerController {
                 }
             } else {
                 model.addAttribute("message",
-                        "Odpowiedź niepoprawna." +"Odpowiedź poprawna to: " + question.getAnswerCorrect());
+                        "Odpowiedź niepoprawna. " + "Odpowiedź poprawna to: " + question.getAnswerCorrect());
             }
 
             model.addAttribute("roomid", rid);
