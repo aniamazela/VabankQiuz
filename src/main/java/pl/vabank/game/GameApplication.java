@@ -6,12 +6,29 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.vabank.game.access.QuestionsRepository;
 import pl.vabank.game.data.QuestionsData;
+
+/**
+ * Klasa GameApplication to klasa konfiguracyjna, klasa główna, która będzie
+ * wykonywana
+ * po uruchomieniu aplikacji.
+ * Adnotacja @SpringBootApplication włącza konfigurację ałtomatyczną SpringBoota
+ * oraz włącza skanowanie komponetów,
+ * co pozwala na zadeklarowanie innych klas jako @Controller, @Entity itp.
+ * Metoda itializer jest opatrzona adnotacją @Bean,
+ * gdy Spring "napotka" taką metodę, wykona ją i zarejestruje zwracaną wartość
+ * jako obiekt (ziarno) w kontenerze.
+ * Wtedy będzie można ten obiekt wstrzyknąć w innym miejscu korzystając np. z
+ * adnotacji @Autowired.
+ * 
+ * @author Klasa konfiguracyjna, generowana przez Springa, modyfikacje
+ *         wprowadziła Anna Mazela i Katarzyna Madalińska.
+ */
 
 @SpringBootApplication
 @RestController
@@ -19,11 +36,6 @@ public class GameApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GameApplication.class, args);
-	}
-
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
 	}
 
 	@Bean
@@ -1057,34 +1069,31 @@ public class GameApplication {
 						"C++",
 						"zarówno w Javie jak i C++",
 						"żadna odp. Nie jest prawidłowa",
-						"C++",
+						"C++",						
 						"Podstawowe elementy języka Java",
 						100),
-
 				new QuestionsData(
 						// pyt2 -100!!!!!!!!!!!!!!!!
 						91L,
 						"Który z podanych niżej znaków specjalnych jest zapisem nowej linii?",
-						"\t",
-						"\n",
-						"\r",
+						"\"\\t\"",
+						"\"\\n\"",
+						"\"\\r\"",
 						"żaden z powyższych",
-						"\n",
+						"\"\\n\"",						
 						"Podstawowe elementy języka Java",
 						100),
-
 				new QuestionsData(
 						// pyt3 -100!!!!!!!!!!!!!!!!
 						92L,
-						"Jaka jest wartość wyrażenia 2.32+char(34)+2.68+char(34)?",
-						"String char(34)+2.322.68+char(34)",
+						"Jaka jest wartość wyrażenia 2.32+\"2.68\"?",
+						"String \"2.322.68\"",
 						"double 5.0",
 						"int 5",
-						"String char(34)+5+char(34)",
-						"String char(34)+2.322.68+char(34)",
+						"String \"5\"",
+						"String \"2.322.68\"",
 						"Podstawowe elementy języka Java",
 						100),
-
 				new QuestionsData(
 						// pyt4 -100!!!!!!!!!!!!!!
 						93L,
@@ -1093,10 +1102,9 @@ public class GameApplication {
 						"String",
 						"double",
 						"int",
-						"String",
+						"String",						
 						"Podstawowe elementy języka Java",
 						100),
-
 				new QuestionsData(
 						// pyt5 -100!!!!!!!!!!!!!
 						94L,
@@ -1105,10 +1113,9 @@ public class GameApplication {
 						"String",
 						"double",
 						"int",
-						"String",
+						"String",						
 						"Podstawowe elementy języka Java",
 						100),
-
 				new QuestionsData(
 						// pyt6 -100!!!!!!!!!!!
 						95L,
@@ -1117,11 +1124,10 @@ public class GameApplication {
 						"||",
 						"!=",
 						"żaden z powyższych",
-						"&&",
+						"&&",						
 						"Podstawowe elementy języka Java",
 						100),
-
-				// Podstawowe elementy języka java
+				// Podstawowe elementy języka Java
 				// 200/////////////////////////////////////////////////////////////////
 				new QuestionsData(
 						// pyt1 -200/e.112
@@ -1131,10 +1137,9 @@ public class GameApplication {
 						"Final",
 						"const",
 						"Const",
-						"final ",
+						"final ",						
 						"Podstawowe elementy języka Java",
 						200),
-
 				new QuestionsData(
 						// pyt2 -200!!!!!!!!!!!!!!
 						97L,
@@ -1143,10 +1148,9 @@ public class GameApplication {
 						"double promien kola",
 						"int liczba#pracownikow",
 						"int $wynagrodzenieMiesieczne",
-						"int $wynagrodzenieMiesieczne",
+						"int $wynagrodzenieMiesieczne",						
 						"Podstawowe elementy języka Java",
 						200),
-
 				new QuestionsData(
 						// pyt3 -200!!!!!!!!!!!!
 						98L,
@@ -1155,10 +1159,9 @@ public class GameApplication {
 						"String true",
 						"int 007",
 						"String null",
-						"double _pi",
+						"double _pi",						
 						"Podstawowe elementy języka Java",
 						200),
-
 				new QuestionsData(
 						// pyt4 -200!!!!!!!!!!!!!
 						99L,
@@ -1167,10 +1170,9 @@ public class GameApplication {
 						"while ",
 						"for ",
 						"wszystkie",
-						"do..while",
+						"do..while",						
 						"Podstawowe elementy języka Java",
 						200),
-
 				new QuestionsData(
 						// pyt5 -200!!!!!!!!!
 						100L,
@@ -1178,11 +1180,10 @@ public class GameApplication {
 						"Math.sqrt(1)",
 						"Math.pow(1,1)",
 						"żaden z powyższych",
-						"zarówno a i b ",
-						"zarówno a i b ",
+						"zarówno Math.sqrt(1) jak i Math.pow(1,1)",
+						"zarówno Math.sqrt(1) jak i Math.pow(1,1)",						
 						"Podstawowe elementy języka Java",
 						200),
-
 				new QuestionsData(
 						// pyt6 -200!!!!!!!!!!!!
 						101L,
@@ -1191,11 +1192,10 @@ public class GameApplication {
 						"Character",
 						"int[]",
 						"double (bo to typ prymitywny)",
-						"double (bo to typ prymitywny)",
+						"double (bo to typ prymitywny)",						
 						"Podstawowe elementy języka Java",
 						200),
-
-				// Podstawowe elementy języka java
+				// Podstawowe elementy języka Java
 				// 300/////////////////////////////////////////////////////////////////
 				new QuestionsData(
 						// pyt1 -300/e114
@@ -1205,10 +1205,9 @@ public class GameApplication {
 						"public static void metoda",
 						"public static void metoda(int byte, char znak)",
 						"public static void metoda()",
-						"public static void metoda()",
+						"public static void metoda()",						
 						"Podstawowe elementy języka Java",
 						300),
-
 				new QuestionsData(
 						// pyt2 -300!!!!!!!!!
 						103L,
@@ -1217,10 +1216,9 @@ public class GameApplication {
 						"wszędzie",
 						"w pakiecie i wszystkich podklasach",
 						"wyłącznie w obrębie pakietu",
-						"w pakiecie i wszystkich podklasach",
+						"w pakiecie i wszystkich podklasach",						
 						"Podstawowe elementy języka Java",
 						300),
-
 				new QuestionsData(
 						// pyt3 -300!!!!!!!!
 						104L,
@@ -1229,22 +1227,20 @@ public class GameApplication {
 						"Tablica String[]",
 						"String",
 						"Tablica Object[]",
-						"Tablica String[]",
+						"Tablica String[]",						
 						"Podstawowe elementy języka Java",
 						300),
-
 				new QuestionsData(
 						// pyt4 -300!!!!!!!!!!!
 						105L,
-						"Który fragment kodu poprawnie tworzy kopię tablicy zadeklarowanej jako: int[]tab = {1,2,3,4};",
-						"int[] tab2 = (int[])tab.clone();",
-						"int[] tab2 = new int[tab];",
-						"int[] tab2 = new int[] (tab);",
-						"int[] tab2 = new int[tab.length]; System.arraycopy(tab, 0, tab2, 0, 3);",
-						"int[] tab2 = (int[])tab.clone();",
+						"Który z poniższych typów jest klasą potomną Object:",
+						"Żaden",
+						"double[]",
+						"void",
+						"int",
+						"double[]",						
 						"Podstawowe elementy języka Java",
 						300),
-
 				new QuestionsData(
 						// pyt5 -300!!!!!!!!!!!
 						106L,
@@ -1253,10 +1249,9 @@ public class GameApplication {
 						"double[]",
 						"void",
 						"int",
-						"double[]",
+						"double[]",						
 						"Podstawowe elementy języka Java",
 						300),
-
 				new QuestionsData(
 						// pyt6 -300!!!!!!!!!!!!
 						107L,
@@ -1265,498 +1260,509 @@ public class GameApplication {
 						"arr.length",
 						"arr.size",
 						"arr.size()",
-						"arr.length",
+						"arr.length",						
 						"Podstawowe elementy języka Java",
 						300),
-
-				// Podstawowe elementy języka java
+				// Podstawowe elementy języka Java
 				// 400/////////////////////////////////////////////////////////////////
 				new QuestionsData(
-					// pyt1 -400/e119
-					108L,
-					"Funkcja isDigit()",
-					"sprawdza, czy podany argument w postaci znaku jest literą",
-					"sprawdza, czy podany znak jest białym znakiem",
-					"sprawdza, czy podany argument w postaci znaku jest liczbą",
-					"żaden z powyższych",
-					"sprawdza, czy podany argument w postaci znaku jest liczbą",
-					"Podstawowe elementy języka Java",
-					400),
-					
-					new QuestionsData(
-					// pyt2 -400!!!!!!!
-					109L,
-					"Która z poniższych deklaracji tablicy jest niepoprawna?",
-					"Integer[] tab = new int[]{1,2,3};",
-					"Integer[] tab = {1,2,3,}",
-					"int tab[] = {1,2,3};",
-					"wszystkie są poprawne",
-					"Integer[] tab = new int[]{1,2,3};",
-					"Podstawowe elementy języka Java",
-					400),
-					
-					new QuestionsData(
-					// pyt3 -400!!!!!!!!!!!!
-					110L,
-					"Który z poniższych fragmentów kodu sprawdza, czy obiekt wskazywany przez referencję xyz należy do klasy XYZ",
-					"if(XYZ classof xyz)",
-					"if(xyz instanceof XYZ)",
-					"if{ (XYZ)zyx != null)",
-					"if(xyz: XYZ)",
-					"if(xyz instanceof XYZ)",
-					"Podstawowe elementy języka Java",
-					400),
-					
-					new QuestionsData(
-					// pyt4 -400!!!!!!!!!!
-					111L,
-					"Aby sprawdzić, czy dwa obiekty typu String mają taką samą zawartość należy:",
-					"Użyć operatora ==",
-					"Użyć metody String.strcmp()",
-					"Użyć metody equals()",
-					"Użyć operatora =",
-					"Użyć metody equals()",
-					"Podstawowe elementy języka Java",
-					400),
-					
-					new QuestionsData(
-					// pyt5 -400!!!!!!!!!
-					112L,
-					"Jeśli nie napiszemy żadnego modyfikatora przed nazwą klasy to wtedy domyślnie:",
-					"Klasa będzie prywatna",
-					"Klasa będzie publiczna",
-					"Klasa będzie widoczna tylko w obrębie pakietu",
-					"Klasa będzie widoczna i dostępna w obrębie pakietu oraz dla wszystkich podklas",
-					"Klasa będzie widoczna tylko w obrębie pakietu",
-					"Podstawowe elementy języka Java",
-					400),
-					
-					new QuestionsData(
-					// pyt6 -400!!!!!!!!
-					113L,
-					"Jaki wyjątek zostanie rzucony w przypadku odwołania się do indeksu z poza zakresu?",
-					"NullPointerException",
-					"IndexOutOfBoundsException",
-					"SQLException",
-					"IllegalArgumentException",
-					"IndexOutOfBoundsException",
-					"Podstawowe elementy języka Java",
-					400),
-					
-				/// Podstawowe elementy języka java
+						// pyt1 -400/e119
+						108L,
+						"Funkcja isDigit()",
+						"sprawdza, czy podany argument w postaci znaku jest literą",
+						"sprawdza, czy podany znak jest białym znakiem",
+						"sprawdza, czy podany argument w postaci znaku jest liczbą",
+						"żaden z powyższych",
+						"sprawdza, czy podany argument w postaci znaku jest liczbą",						
+						"Podstawowe elementy języka Java",
+						400),
+				new QuestionsData(
+						// pyt2 -400!!!!!!!
+						109L,
+						"Która z poniższych deklaracji tablicy jest niepoprawna?",
+						"Integer[] tab = new int[]{1,2,3};",
+						"Integer[] tab = {1,2,3,}",
+						"int tab[] = {1,2,3};",
+						"wszystkie są poprawne",
+						"Integer[] tab = new int[]{1,2,3};",						
+						"Podstawowe elementy języka Java",
+						400),
+				new QuestionsData(
+						// pyt3 -400!!!!!!!!!!!!
+						110L,
+						"Który z poniższych fragmentów kodu sprawdza, czy obiekt wskazywany przez referencję xyz należy do klasy XYZ",
+						"if(XYZ classof xyz)",
+						"if(xyz instanceof XYZ)",
+						"if{ (XYZ)zyx != null)",
+						"if(xyz: XYZ)",
+						"if(xyz instanceof XYZ)",						
+						"KATEGORIA:Podstawowe elementy języka Java",
+						400),
+				new QuestionsData(
+						// pyt4 -400!!!!!!!!!!
+						111L,
+						"Aby sprawdzić, czy dwa obiekty typu String mają taką samą zawartość należy:",
+						"Użyć operatora ==",
+						"Użyć metody String.strcmp()",
+						"Użyć metody equals()",
+						"Użyć operatora =",
+						"Użyć metody equals()",						
+						"Podstawowe elementy języka Java",
+						400),
+				new QuestionsData(
+						// pyt5 -400!!!!!!!!!
+						112L,
+						"Jeśli nie napiszemy żadnego modyfikatora przed nazwą klasy to wtedy domyślnie:",
+						"Klasa będzie prywatna",
+						"Klasa będzie publiczna",
+						"Klasa będzie widoczna tylko w obrębie pakietu",
+						"Klasa będzie widoczna i dostępna w obrębie pakietu oraz dla wszystkich podklas",
+						"Klasa będzie widoczna tylko w obrębie pakietu",						
+						"Podstawowe elementy języka Java",
+						400),
+				new QuestionsData(
+						// pyt6 -400!!!!!!!!
+						113L,
+						"Jaki wyjątek zostanie rzucony w przypadku odwołania się do indeksu z poza zakresu?",
+						"NullPointerException",
+						"IndexOutOfBoundsException",
+						"SQLException",
+						"IllegalArgumentException",
+						"IndexOutOfBoundsException",						
+						"Podstawowe elementy języka Java",
+						400),
+				/// Podstawowe elementy języka Java
 				/// 500////////////////////////////////////////////////////////////////
 				new QuestionsData(
-					// pyt1 -500/e121
-					114L,
-					"Które z poniższych stwierdzeń jest NIEprawdziwe:",
-					"Każda metoda zadeklarowana wewnątrz interfejsu jest publiczna",
-					"W interfejsach nie można deklarować pól",
-					"Każda zmienna zadeklarowana wewnątrz interfejsu jest finalna i statyczna",
-					"Każda metoda zadeklarowana wewnątrz interfejsu jest abstrakcyjna",
-					"W interfejsach nie można deklarować pól",
-					"Podstawowe elementy języka Java",
-					500),
-					
-					new QuestionsData(
-					// pyt2 -500!!!!!!!!!
-					115L,
-					"Które z poniższych stwierdzeń jest NIEprawdziwe:",
-					"Interfejs może dziedziczyć po interfejsie. Dziedziczone są wówczas zdefiniowane w nim stałe i metody",
-					"Wewnątrz interfejsu można zadeklarować klasę lub interfejs",
-					"Klasa może implementować wiele interfejsów",
-					"Klasa implementująca jakiś interfejs nie może dziedziczyć po innej klasie",
-					"Klasa implementująca jakiś interfejs nie może dziedziczyć po innej klasie",
-					"Podstawowe elementy języka Java",
-					500),
-					
-					new QuestionsData(
-					// pyt3 -500!!!!!!!!!
-					116L,
-					"Które z poniższych zdań jest NIEprawdziwe:",
-					"Klasa, która nie jest publiczna jest widoczna wyłącznie wewnątrz pakietu, do którego należy",
-					"W języku Java możliwe jest dziedziczenie wielobazowe, ale nie zaleca się jego stosowania",
-					"Klasa Object jest nadklasą każdej klasy (poza samą sobą)",
-					"wszystkie są poprawne",
-					"wszystkie są poprawne",
-					"Podstawowe elementy języka Java",
-					500),
-					
-					new QuestionsData(
-					// pyt4 -500!!!!!!!!
-					117L,
-					"Wyjątki są…",
-					"Obiektami, które opisują błędną sytuację w kodzie",
-					"Podklasami klasy Throwable",
-					"Związane ze słowami kluczowymi: try, catch, finally, throw, throws",
-					"Wszystkie powyższe",
-					"Wszystkie powyższe",
-					"Podstawowe elementy języka Java",
-					500),
-					
-					new QuestionsData(
-					// pyt5 -500!!!!!!!!
-					118L,
-					"Która kombinacja modyfikatorów jest dopuszczalna?",
-					"abstract final",
-					"static synchronized",
-					"abstract synchronized",
-					"private abstract",
-					"static synchronized",
-					"Podstawowe elementy języka Java",
-					500),
-					
-					new QuestionsData(
-					// pyt6 -500!!!!!!!!!
-					119L,
-					"Które ze stwierdzeń odnoszących się do wyjątków jest NIEprawdziwe:",
-					"Po wygenerowaniu wyjątku program kończy działanie",
-					"Wyjątki użytkownika powinny być potomkami klasy Exception",
-					"Wyjątki typu RuntimeException() (i klas potomnych) generowane są poprzez maszynę wirtualną, np. w wyniku sprawdzania zabezpieczeń",
-					"Obiekty wyjątków przenoszą informację o stanie stosu (np. w momencie ich generacji)",
-					"Po wygenerowaniu wyjątku program kończy działanie",
-					"Podstawowe elementy języka Java",
-					500),
-					
+						// pyt1 -500/e121
+						114L,
+						"Które z poniższych stwierdzeń jest NIEprawdziwe:",
+						"Każda metoda zadeklarowana wewnątrz interfejsu jest publiczna",
+						"W interfejsach nie można deklarować pól",
+						"Każda zmienna zadeklarowana wewnątrz interfejsu jest finalna i statyczna",
+						"Każda metoda zadeklarowana wewnątrz interfejsu jest abstrakcyjna",
+						"W interfejsach nie można deklarować pól",						
+						"Podstawowe elementy języka Java",
+						500),
+				new QuestionsData(
+						// pyt2 -500!!!!!!!!!
+						115L,
+						"Które z poniższych stwierdzeń jest NIEprawdziwe:",
+						"Interfejs może dziedziczyć po interfejsie. Dziedziczone są wówczas zdefiniowane w nim stałe i metody",
+						"Wewnątrz interfejsu można zadeklarować klasę lub interfejs",
+						"Klasa może implementować wiele interfejsów",
+						"Klasa implementująca jakiś interfejs nie może dziedziczyć po innej klasie",
+						"Klasa implementująca jakiś interfejs nie może dziedziczyć po innej klasie",						
+						"Podstawowe elementy języka Java",
+						500),
+				new QuestionsData(
+						// pyt3 -500!!!!!!!!!
+						116L,
+						"Które z poniższych zdań jest NIEprawdziwe:",
+						"Klasa, która nie jest publiczna jest widoczna wyłącznie wewnątrz pakietu, do którego należy",
+						"W języku Java możliwe jest dziedziczenie wielobazowe, ale nie zaleca się jego stosowania",
+						"Klasa Object jest nadklasą każdej klasy (poza samą sobą)",
+						"wszystkie są poprawne",
+						"wszystkie są poprawne",						
+						"Podstawowe elementy języka Java",
+						500),
+				new QuestionsData(
+						// pyt4 -500!!!!!!!!
+						117L,
+						"Wyjątki są…",
+						"Obiektami, które opisują błędną sytuację w kodzie",
+						"Podklasami klasy Throwable",
+						"Związane ze słowami kluczowymi: try, catch, finally, throw, throws",
+						"Wszystkie powyższe odpowiedzi są poprawne",
+						"Wszystkie powyższe odpowiedzi są poprawne",						
+						"Podstawowe elementy języka Java",
+						500),
+				new QuestionsData(
+						// pyt5 -500!!!!!!!!
+						118L,
+						"Która kombinacja modyfikatorów jest dopuszczalna?",
+						"abstract final",
+						"static synchronized",
+						"abstract synchronized",
+						"private abstract",
+						"static synchronized",
+						"Podstawowe elementy języka Java",
+						500),
+				new QuestionsData(
+						// pyt6 -500!!!!!!!!!
+						119L,
+						"Które ze stwierdzeń odnoszących się do wyjątków jest NIEprawdziwe:",
+						"Po wygenerowaniu wyjątku program kończy działanie",
+						"Wyjątki użytkownika powinny być potomkami klasy Exception",
+						"Wyjątki typu RuntimeException() (i klas potomnych) generowane są poprzez maszynę wirtualną, np. w wyniku sprawdzania zabezpieczeń",
+						"Obiekty wyjątków przenoszą informację o stanie stosu (np. w momencie ich generacji)",
+						"Po wygenerowaniu wyjątku program kończy działanie",
+						"Podstawowe elementy języka Java",
+						500),
 				////////////////////////////////////////////////////////////
-				//////////// java////////////////////////////////////////////////
+				//////////// JavaFX, Swing, AWT////////////////////////////////////////////////
 				///////////////////////////////////////////////////////////
 				new QuestionsData(
 						// pyt1 -100/e115
 						120L,
-						"Która zmienna jest typu obiektowego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Który zapis jest poprawny?",
+						"JButton jButton = new JButton (\"Tekst\");",
+						"JButton jButton = JButton (\"Tekst\");",
+						"JButton jButton = new JButton;",
+						"JButton jButton = JButton();",
+						"JButton jButton = new JButton (\"Tekst\");",
+						"JavaFX, Swing, AWT",
 						100),
+						
 				new QuestionsData(
 						// pyt2 -100!!!!!!!!!!!!
 						121L,
-						"Która zmienna jest typu obiektowego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
-						100),
+						"Przyjmijmy, że JFrame frame = new JFrame(). W jaki sposób możemy ustawić rozmiar frame?",
+						"frame.setSize(100, 100)",
+						"frame.setDimension(100, 100)",
+						"frame.setBounds(100, 100)",
+						"frame.setLocation(100, 100)",
+						"frame.setSize(100, 100)",
+						"JavaFX, Swing, AWT",
+						100),						
 				new QuestionsData(
 						// pyt3 -100!!!!!!!!
 						122L,
-						"Która zmienna jest typu obiektowego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Która z podanych poniżej bibliotek umożliwia tworzenie graficznego interfejsu użytkownika?",
+						"AWT",
+						"Swing",
+						"JavaFX",
+						"Wszystkie wymienione",
+						"Wszystkie wymienione",
+						"JavaFX, Swing, AWT",
 						100),
+						
 				new QuestionsData(
 						// pyt4 -100!!!!!!
 						123L,
-						"Która zmienna jest typu obiektowego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Dzieli powierzchnię na pięć regionów i rozkłada w nich węzły. Jakiej klasy dotyczy ten opis?",
+						"Pane",
+						"AnchorPane",
+						"BorderPane",
+						"FlowPane",
+						"BorderPane",
+						"JavaFX, Swing, AWT",
 						100),
+						
 				new QuestionsData(
 						// pyt5 -100!!!!!!!!
 						124L,
-						"Która zmienna jest typu obiektowego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Do czego może być wykorzystywana technologia JavaFX?",
+						"Do tworzenia aplikacji deskopowych",
+						"Do tworzenia aplikacji dla urządzeń mobilnych.",
+						"Do tworzenia aplikacji internetowych.",
+						"Wszystkie odpowiedzi są poprawne.",
+						"Wszystkie odpowiedzi są poprawne.",
+						"JavaFX, Swing, AWT",
 						100),
+						
 				new QuestionsData(
 						// pyt6 -100!!!!!!!!
 						125L,
-						"Która zmienna jest typu obiektowego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Jaka klasa jest parametrem metody start()? [JavaFX]",
+						"Stage",
+						"Scene",
+						"Window",
+						"Canvas",
+						"Stage",
+						"JavaFX, Swing, AWT",
 						100),
-				// java
+						
+				// JavaFX, Swing, AWT
 				// 200/////////////////////////////////////////////////////////////////
 				new QuestionsData(
 						// pyt1 -200/e.118
 						126L,
-						"Który z podanych operatorów jest operatorem koniukcji?",
-						"&&",
-						"||",
-						"!=",
-						"żaden z powyższych",
-						"&&",
-						"java",
+						"Jaki jest domyślny zarządca dla kontenera typu JFrame?",
+						"FlowLayout",
+						"CardLayout",
+						"BoxLayout",
+						"BorderLayout",
+						"BorderLayout",
+						"JavaFX, Swing, AWT",
 						200),
+						
 				new QuestionsData(
 						// pyt2 -200!!!!!!!!!
 						127L,
-						"Który z podanych operatorów jest operatorem koniukcji?",
-						"&&",
-						"||",
-						"!=",
-						"żaden z powyższych",
-						"&&",
-						"java",
+						"Jaki jest domyślny zarządca dla kontenera typu JPanel?",
+						"FlowLayout",
+						"CardLayout",
+						"BoxLayout",
+						"BorderLayout",
+						"FlowLayout",
+						"JavaFX, Swing, AWT",
 						200),
+						
 				new QuestionsData(
 						// pyt3 -200!!!!!!!!
 						128L,
-						"Który z podanych operatorów jest operatorem koniukcji?",
-						"&&",
-						"||",
-						"!=",
-						"żaden z powyższych",
-						"&&",
-						"java",
+						"Co robi metoda pack() z klasy JFrame?",
+						"dopasowuje rozmiar okna do rozmiaru komponentów.",
+						"dopasowuje rozmiar komponentów do rozmiaru okna",
+						"dopasowuje rozmiar komponentów do rozmiaru sceny",
+						"dopasowuje rozmiar sceny do rozmiaru komponentów.",
+						"dopasowuje rozmiar okna do rozmiaru komponentów.",
+						"JavaFX, Swing, AWT",
 						200),
+						
 				new QuestionsData(
 						// pyt4 -200!!!!!!!!!!
 						129L,
-						"Który z podanych operatorów jest operatorem koniukcji?",
-						"&&",
-						"||",
-						"!=",
-						"żaden z powyższych",
-						"&&",
-						"java",
+						"Który z układów pozwala na umieszczanie elementów w wierszach i kolumnach?",
+						"FlowPane",
+						"GridPane",
+						"BorderPane",
+						"StackPane",
+						"GridPane",
+						"JavaFX, Swing, AWT",
 						200),
+						
 				new QuestionsData(
 						// pyt5 -200!!!!!!!!!!!
 						130L,
-						"Który z podanych operatorów jest operatorem koniukcji?",
-						"&&",
-						"||",
-						"!=",
-						"żaden z powyższych",
-						"&&",
-						"java",
+						"Który zapis nie jest poprawny?",
+						"Color color1 = new Color(0.4, 0.6, 1.0);",
+						"Color color1 = Color.DARKORANGE;",
+						"Color color1 = new Color(256, 50, 60);",
+						"Color color1 = new Color.rgb(256, 50, 60);",
+						"Color color1 = new Color(256, 50, 60);",
+						"JavaFX, Swing, AWT",
 						200),
+						
 				new QuestionsData(
 						// pyt6 -200!!!!!!!
 						131L,
-						"Który z podanych operatorów jest operatorem koniukcji?",
-						"&&",
-						"||",
-						"!=",
-						"żaden z powyższych",
-						"&&",
-						"java",
+						"Który z podanych konstruktrów jest poprawny?",
+						"FlowPane()",
+						"FlowPane(double hgap, double vgap)",
+						"FlowPane(Orientation orientation)",
+						"Wszystkie odpowiedzi są poprawne.",
+						"Wszystkie odpowiedzi są poprawne.",
+						"JavaFX, Swing, AWT",
 						200),
-				// java
+						
+				// JavaFX, Swing, AWT
 				// 300/////////////////////////////////////////////////////////////////
 				new QuestionsData(
 						// pyt1 -300/e116
 						132L,
-						"Która zmienna nie jest typu prostego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Jaki argument przyjmie metoda setDefaultCloseOperation(arg),w przypadku gdy chcemy zamknąć aplikację po zamknięciu okna?",
+						"DO_NOTHING_ON_CLOSE",
+						"HIDE_ON_CLOSE",
+						"DISPOSE_ON_CLOSE",
+						"EXIT_ON_CLOSE",
+						"EXIT_ON_CLOSE",
+						"JavaFX, Swing, AWT",
 						300),
+						
 				new QuestionsData(
 						// pyt2 -300!!!!!!
 						133L,
-						"Która zmienna nie jest typu prostego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Przyjmijmy, że JButton b1= new JButton(\"button 1\"). Przy wywołaniu b1.setBounds(10,10,100,40) otrzymamy przycisk: ",
+						"którego lewy, górny narożnik znajduje się w punkcie o współrzędnych x=10, y=10. Natomiast prawy dolny narożnik znajduje się w punkcie o współrzędnych x=100, y=40.",
+						"którego lewy, dolny narożnik znajduje się w punkcie o współrzędnych x=10, y=10. Natomiast prawy, górny narożnik znajduje się w punkcie o współrzędnych x=100, y=40.",
+						"o szerokości=100, wysokosc=40, którego lewy, górny narożnik znajduje się w punkcie o współrzędnych x=10, y=10. ",
+						"o szerokości=100, wysokosc=40, którego lewy, dolny narożnik znajduje się w punkcie o współrzędnych x=10, y=10. ",
+						"o szerokości=100, wysokosc=40, którego lewy, górny narożnik znajduje się w punkcie o współrzędnych x=10, y=10. ",
+						"JavaFX, Swing, AWT",
 						300),
+						
 				new QuestionsData(
 						// pyt3 -300!!!!!!!!
 						134L,
-						"Która zmienna nie jest typu prostego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Która z metod zwraca referencję do obiektu –źródła zdarzenia? ",
+						"getSource()",
+						"getActionSource()",
+						"getEventSource()",
+						"getEventObject()",
+						"getSource()",
+						"JavaFX, Swing, AWT",
 						300),
+						
 				new QuestionsData(
 						// pyt4 -300!!!!!
 						135L,
-						"Która zmienna nie jest typu prostego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Zapis HBox myHBox = new HBox(5), oznacza, że:",
+						"odstęp między kolejnymi dziećmi będzie wynosił 5 pikseli",
+						"myHBox będzie zawierał 5 dzieci ułożonych w poziomej linii od lewej do prawej",
+						"myHBox będzie zawierał 5 dzieci ułożonych w pojedynczej kolumnie od góry do dołu",
+						"margines zewnętrzny otaczający myHBox będzie wynosił 5 pikseli",
+						"odstęp między kolejnymi dziećmi będzie wynosił 5 pikseli",
+						"JavaFX, Swing, AWT",
 						300),
 				new QuestionsData(
 						// pyt5 -300!!!
 						136L,
-						"Która zmienna nie jest typu prostego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Przyjmijmy, że VBox vbox = new VBox() oraz Label label = new Label(\"this is VBox example\"). Który z poniższych zapisów jest poprawny?",
+						"vbox.getChildren().add(label);",
+						"vbox.add(label);",
+						"vbox.getChildren(label);",
+						"vbox.add.getChildren(label)",
+						"vbox.getChildren().add(label);",
+						"JavaFX, Swing, AWT",
 						300),
 				new QuestionsData(
 						// pyt6 -300!!!!!!
 						137L,
-						"Która zmienna nie jest typu prostego?",
-						"char",
-						"String",
-						"double",
-						"int",
-						"String",
-						"java",
+						"Ile i jakie stany posiada CheckBox?",
+						"3 stany: checked, unchecked i undefined",
+						"2 stany: checked i unchecked",
+						"3 stany: selected, unselected i undefined",
+						"2 stany: selected i unselected",
+						"3 stany: checked, unchecked i undefined",
+						"JavaFX, Swing, AWT",
 						300),
-				// java
+				// JavaFX, Swing, AWT
 				// 400/////////////////////////////////////////////////////////////////
 				new QuestionsData(
 						// pyt1 -400/e.120
 						138L,
-						"Która z podanych metod jest metodą statyczną?",
-						"Math.sqrt(1)",
-						"Math.pow(1,1)",
-						"żaden z powyższych",
-						"zarówno a i b",
-						"zarówno a i b",
-						"java",
+						"Co zwraca metoda getKeyChar()?",
+						"zwraca znak klawisza",
+						"zwraca kod klawisza",
+						"zwraca wartość true/false",
+						"sprawdza czy klawisz jest funkcyjny ",
+						"zwraca znak klawisza",
+						"JavaFX, Swing, AWT",
 						400),
+						
 				new QuestionsData(
 						// pyt2 -400!!!!
 						139L,
-						"Która z podanych metod jest metodą statyczną?",
-						"Math.sqrt(1)",
-						"Math.pow(1,1)",
-						"żaden z powyższych",
-						"zarówno a i b",
-						"zarówno a i b",
-						"java",
+						"Jaką metodę posiada interfejs KeyListener?",
+						"keyTyped",
+						"keyPressed",
+						"keyReleased",
+						"wszystkie wymienione",
+						"wszystkie wymienione",
+						"JavaFX, Swing, AWT",
 						400),
+						
 				new QuestionsData(
 						// pyt3 -400!!!!
 						140L,
-						"Która z podanych metod jest metodą statyczną?",
-						"Math.sqrt(1)",
-						"Math.pow(1,1)",
-						"żaden z powyższych",
-						"zarówno a i b",
-						"zarówno a i b",
-						"java",
+						"Który z podanych interfejsów obsługuje zdarzenie od naciśnięcia klawiszy myszy?",
+						"MouseListener",
+						"MouseMotionListener",
+						"MouseEvent",
+						"MouseFocusListener",
+						"MouseListener",
+						"JavaFX, Swing, AWT",
 						400),
+						
 				new QuestionsData(
 						// pyt4 -400!!!
 						141L,
-						"Która z podanych metod jest metodą statyczną?",
-						"Math.sqrt(1)",
-						"Math.pow(1,1)",
-						"żaden z powyższych",
-						"zarówno a i b",
-						"zarówno a i b",
-						"java",
+						"Który z podanych konstruktrów NIE jest poprawny?",
+						"Image(String url)",
+						"Image(String url, boolean backgroundLoading)",
+						"Image(InputStream is)",
+						"Image(InputStream is, boolean preserveRatio, boolean smooth)",
+						"Image(InputStream is, boolean preserveRatio, boolean smooth)",
+						"JavaFX, Swing, AWT",
 						400),
+						
 				new QuestionsData(
 						// pyt5 -400!!!!
 						142L,
-						"Która z podanych metod jest metodą statyczną?",
-						"Math.sqrt(1)",
-						"Math.pow(1,1)",
-						"żaden z powyższych",
-						"zarówno a i b",
-						"zarówno a i b",
-						"java",
+						"Który z podanych konstruktrów jest poprawny?",
+						"WritableImage(int width, int height)",
+						"WritableImage(PixelReader reader, int width, int height)",
+						"WritableImage(PixelReader reader, int x, int y, int width, int height)",
+						"Wszystkie odpowiedzi są poprawne.",
+						"Wszystkie odpowiedzi są poprawne.",
+						"JavaFX, Swing, AWT",
 						400),
+						
 				new QuestionsData(
 						// pyt6 -400!!!!
 						143L,
-						"Która z podanych metod jest metodą statyczną?",
-						"Math.sqrt(1)",
-						"Math.pow(1,1)",
-						"żaden z powyższych",
-						"zarówno a i b",
-						"zarówno a i b",
-						"java",
+						"Które stwierdzenie jest fałszywe?",
+						"Metoda init() jest wywoływana na samym początku działania aplikacji.",
+						"Jeśli aplikacja nie potrzebuje żadnych czynności inicjalizacyjnych, to metody init() nie trzeba przesłaniać.",
+						"Metody init() nie można używać do tworzenia obiektu sceny ani do jej konstruowania.",
+						"Metody init() należy użyć do tworzenia obiektu sceny i do jej konstruowania.",
+						"Metody init() należy użyć do tworzenia obiektu sceny i do jej konstruowania.",
+						"JavaFX, Swing, AWT",
 						400),
+						
 				/// java
 				/// 500////////////////////////////////////////////////////////////////
 				new QuestionsData(
 						// pyt1 -500/
 						144L,
-						"Metoda Math.abs(int)",
-						"Zwraca poprawnie zaokrąglony dodatni pierwiastek kwadratowy z int wartości.",
-						"Zwraca bezstronny wykładnik używany w reprezentacji float.",
-						"Zwraca pierwiastek sześcienny int wartości.",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"java",
+						"Który z podanych zapisów umożliwia centrowanie okna w obszarze pulpitu?  ",
+						"JFrame.setLocationRelativeTo(null)  ",
+						"JFrame.setLocationRelativeTo(Center)  ",
+						"JFrame.setLocation(null)  ",
+						"JFrame.setLocation(Center)  ",
+						"JFrame.setLocationRelativeTo(null)  ",
+						"JavaFX, Swing, AWT ",
 						500),
+						
 				new QuestionsData(
 						// pyt2 -500!!!!
 						145L,
-						"Metoda Math.abs(int)",
-						"Zwraca poprawnie zaokrąglony dodatni pierwiastek kwadratowy z int wartości.",
-						"Zwraca bezstronny wykładnik używany w reprezentacji float.",
-						"Zwraca pierwiastek sześcienny int wartości.",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"java",
+						"Jakie metody posiada interfejs ActionListener? ",
+						"1 metodę tj. actionEvent ",
+						"1 metodę tj. actionPerformed",
+						"3 metody tj. actionEvent,  actionCommand oraz actionPerformed",
+						"1 metodę tj. actionCommand",
+						"1 metodę tj. actionPerformed",
+						"JavaFX, Swing, AWT",
 						500),
 				new QuestionsData(
 						// pyt3 -500!!!!!
 						146L,
-						"Metoda Math.abs(int)",
-						"Zwraca poprawnie zaokrąglony dodatni pierwiastek kwadratowy z int wartości.",
-						"Zwraca bezstronny wykładnik używany w reprezentacji float.",
-						"Zwraca pierwiastek sześcienny int wartości.",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"java",
+						"Jaki jest model obsługi zdarzeń w bibliotece Swing?",
+						"Delegacyjny",
+						"Globalna kolejka zdarzeń w pętli głównej programu oraz rozpoznanie zdarzenia po typie",
+						"Główna pętla i funkcje callback",
+						"Globalna kolejka zdarzeń w pętli głównej programu oraz funkcja callback",
+						"Delegacyjny",
+						"JavaFX, Swing, AWT",
 						500),
+						
 				new QuestionsData(
 						// pyt4 -500!!!
 						147L,
-						"Metoda Math.abs(int)",
-						"Zwraca poprawnie zaokrąglony dodatni pierwiastek kwadratowy z int wartości.",
-						"Zwraca bezstronny wykładnik używany w reprezentacji float.",
-						"Zwraca pierwiastek sześcienny int wartości.",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"java",
+						"Która z podanych niżej klas NIE dziedziczy po klasie Control?",
+						"Slider",
+						"Spinner",
+						"Menu",
+						"ScrollPane",
+						"Menu",
+						"JavaFX, Swing, AWT",
 						500),
+
 				new QuestionsData(
 						// pyt5 -500!!!!
 						148L,
-						"Metoda Math.abs(int)",
-						"Zwraca poprawnie zaokrąglony dodatni pierwiastek kwadratowy z int wartości.",
-						"Zwraca bezstronny wykładnik używany w reprezentacji float.",
-						"Zwraca pierwiastek sześcienny int wartości.",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"java",
+						"Które stwierdzenie jest fałszywe?",
+						"Klasa Canvas dziedziczy po Node.",
+						"Canvas jest powierzchnią przeznaczoną do rysowania za pomocą komend języka Java dostarczanych przez klasę GraphicsContext.",
+						"Klasa udostępnia metodę getGraphicsContext()",
+						"Do utworzenia obiektu klasy Canvas służą 2 konstruktory: Canvas() Canvas(int width, int heigh);",
+						"Klasa udostępnia metodę getGraphicsContext()",
+						"JavaFX, Swing, AWT",
 						500),
+
 				new QuestionsData(
 						// pyt6 -500!!!!
 						149L,
-						"Metoda Math.abs(int)",
-						"Zwraca poprawnie zaokrąglony dodatni pierwiastek kwadratowy z int wartości.",
-						"Zwraca bezstronny wykładnik używany w reprezentacji float.",
-						"Zwraca pierwiastek sześcienny int wartości.",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"Zwraca wartość bezwzględną int wartości. ",
-						"java",
+						"Jakie klasy pozwalają nam na wczytywanie treści ze stron internetowych w JavaFX?",
+						"WebView i WebEngine",
+						"WebPorts i WebEngine",
+						"WebView i WebPorts",
+						"WebView, WebEngine i WebPorts",
+						"WebView i WebEngine",
+						"JavaFX, Swing, AWT",
 						500)
 
 		));
