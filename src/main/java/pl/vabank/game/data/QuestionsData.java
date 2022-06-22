@@ -6,12 +6,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.*;
-@Entity 
+
+/**
+ * adnotacja @Entity wskazuje klasę QuestionsData jako encję JPA
+ * oraz klasa QuestionsData odpowiada tabeli questions_data w bazie danych
+ */
+@Entity
 public class QuestionsData {
-    
+
     public QuestionsData() {
     }
 
+    /**
+     * @param id identyfikator pytania
+     * @param questionText treść pytania
+     * @param answer1Text pierwszy wariant odpowiedzi
+     * @param answer2Text drugi wariant odpowiedzi
+     * @param answer3Text trzeci wariant odpowiedzi
+     * @param answer4Text czwarty wariant odpowiedzi
+     * @param answerCorrect poprawna odpowiedź 
+     * @param nameCategory nazwa kategorii
+     * @param priceCategory stawka (nagroda) do wygrania
+     */
     public QuestionsData(Long id, String questionText, String answer1Text, String answer2Text, String answer3Text,
             String answer4Text, String answerCorrect, String nameCategory, int priceCategory) {
         this.id = id;
@@ -25,10 +41,19 @@ public class QuestionsData {
         this.priceCategory = priceCategory;
     }
 
+    /**
+     * adnotacja @Id wskazuje, że pole id typu Long jest identyfikatorem (unikalnym) pytania
+     */
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * adnotacje @Column(nullable = false) dla pól questionText, answer1Text, answer2Text,
+     * answer3Text, answer4Text, answerCorrect, nameCategory, priceCategory wskazują, 
+     * że ww. pola będą zapisywane w kolumnach o takich samych nazwach jak ww.pola 
+     * oraz że pola te nie mogą mieć wartości NULL
+     */
     @Column(nullable = false)
     private String questionText;
 

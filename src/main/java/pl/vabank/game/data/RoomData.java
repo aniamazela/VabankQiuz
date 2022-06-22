@@ -9,6 +9,10 @@ import java.util.List;
 
 import javax.persistence.*;
 
+/**
+ * adnotacja @Entity wskazuje klasę RoomData jako encję JPA  
+ * oraz klasa RoomData odpowiada tabeli room_data w bazie danych
+ */
 @Entity // This tells Hibernate to make a table out of this class
 public class RoomData {
 
@@ -16,13 +20,25 @@ public class RoomData {
   }
 
   
-
+/**
+ * @param id identyfikator pokoju
+ */
   public RoomData(Long id) {
     this.id = id;
   }
 
 
-
+/**
+ * @param id identyfikator pokoju
+ * @param activRoom identyfikator bieżącego pokoju
+ * @param activRound identyfikator bieżacej rundy
+ * @param player1 gracz 1
+ * @param player1Points zdobyte punkty przez gracza 1
+ * @param player2 gracz 2
+ * @param player2Points zdobyte punkty przez gracza 2
+ * @param question1 - @param question25 pytania o nr od 1 do 25
+ * @param activeQuestion1 - @param activeQuestion25 wylosowane pytania o nr od 1 do 25
+ */
   public RoomData(Long id, int activRoom, int activRound, UserData player1, int player1Points, UserData player2,
       int player2Points, QuestionsData question1, QuestionsData question2, QuestionsData question3,
       QuestionsData question4, QuestionsData question5, QuestionsData question6, QuestionsData question7,
@@ -158,16 +174,29 @@ public class RoomData {
 
   }
 
-
+/**
+ * adnotacja @GeneratedValue dla pola @Id oznacza, 
+ * że wartość pola będzie generowana automatycznie podczas zapisu encji do bazy
+ */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  /**
+   * adnotacje @Column(nullable = false) dla pól activRoom, activRound wskazują, 
+     * że ww. pola będą zapisywane w kolumnach o takich samych nazwach jak ww.pola 
+     * oraz że pola te nie mogą mieć wartości NULL
+   */
   @Column(nullable = false)
   private int activRoom;
 
   @Column(nullable = false)
   private int activRound;
+  
+  /**
+   * adnotacja @ManyToOne dla pól player1, player2, question1-question25 łączy encje w sposób
+   * wiele do jednego tj. pozwala na połączenie wielu graczy do jednego 
+   */
   
   @ManyToOne
   private UserData player1;
@@ -175,7 +204,6 @@ public class RoomData {
 
   @ManyToOne
   private UserData player2;
-  
   int player2Points;
 
   @ManyToOne
@@ -230,7 +258,11 @@ public class RoomData {
   private QuestionsData question25;
   
 
-
+  /**
+   * adnotacje @Column(nullable = false) dla pól activeQuestion1-activeQuestion25 wskazują, 
+     * że ww. pola będą zapisywane w kolumnach o takich samych nazwach jak ww.pola 
+     * oraz że pola te nie mogą mieć wartości NULL
+   */
   @Column(nullable = false)
   private int activeQuestion1;
   @Column(nullable = false)
