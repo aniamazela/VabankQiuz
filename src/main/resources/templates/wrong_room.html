@@ -4,12 +4,65 @@
     <meta charset="ISO-8859-1">
     <title>Room not exist</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/free-photo/blue-steam-black-background_172251-548.jpg?w=740");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #naglowek {
+            font-family: "Lucida Handwriting", "Brush Script MT", cursive;
+            font-weight: bold;
+            font-size: 36px;
+            color: white;
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 750px;
+            text-align: center;
+            background-color: white;
+            border: 12px solid goldenrod;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background-color: grey !important;
+            width: 350px;
+            border-color: darkgray;
+            border-radius: 15px;
+            margin: 3px;
+        }
+
+        a:link {
+            text-decoration: none !important;
+        }
+    </style>
 </head>
 <body>
-    <div class="container text-center">
-        <h3>Room not exist</h3>
-        <h4><a th:href="@{/rooms}">Click here to go to list of rooms</a></h4>
-    </div>
-     
+    <p id="naglowek">Vabank Quiz Java</p>
+    <table>
+        <tr>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                <div class="container text-center">
+                    <h3>Pokój nie istnieje</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{/rooms}">Wróc do listy pokoi.</a>
+            </td>
+        </tr>
+        </div>
+    </table>
 </body>
 </html>

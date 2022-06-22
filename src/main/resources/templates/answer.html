@@ -44,32 +44,19 @@
     </style>
 </head>
 <body>
-    <p id="naglowek"> Java Vabank</p>
+    <p id="naglowek">Vabank Quiz Java</p>
     <table>
         <tr><th>
             <div class="container text-center">
-                <h1 th:text="${message}"></h1><br>
+                <br><h3 th:text="${message}"></h3><br>
                 <hr>
             </div>
         </th></tr>
-        <tr><td id="timmer">
+        <tr><td>
             <br>
-            <h4>Przekierowanie nastąpi za <span id="counter"> 5 </span> sekund. Kliknij poniżej, aby przejść do listy pytań: </h4>
-            <br><a th:href="@{/game_room/}+${roomid}" class="btn btn-primary">List of Questions</a><br><br>
+            <br><a th:href="@{/game_room/}+${roomid}" class="btn btn-primary" >Wróc do listy pytań.</a><br><br>
         </td></tr>
-    </table>
+    </table> <br>
    
-    <script>
-        setInterval(function () {
-            var div = document.querySelector("#counter");
-            var count = div.textContent * 1 - 1;
-            div.textContent = count;
-            if (count <= 0) {
-                document.getElementById("counter").innerHTML = "0";
-                //window.location.replace('/game_room/'+"${room.id}");
-            }
-            
-        }, 1000);
-    </script>
 </body>
 </html>

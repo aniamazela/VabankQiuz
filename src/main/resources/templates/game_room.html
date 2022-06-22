@@ -55,11 +55,11 @@
 </head>
 
 <body>
-    <p id="naglowek"> Java Vabank</p>
+    <p id="naglowek">Vabank Quiz Java</p>
     <table>
         <tr style="background-color: rgb(94, 182, 197); color: white;">
             <th colspan="2">
-                <h4><a th:text="'Twoje room ID to: '+${room.id}"></a></h4>
+                <h4><a th:text="'ID Twojego pokoju to: '+${room.id}"></a></h4>
             </th>
         </tr>
         <tr>
@@ -72,8 +72,8 @@
                                     <th>GIT</th>
                                     <th>Kolekcje</th>
                                     <th>Wątki</th>
-                                    <th>Podstawowy java</th>
-                                    <th>Category 5</th>
+                                    <th>Podstawy Java</th>
+                                    <th>JavaFX, Swing, AWT</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -176,14 +176,14 @@
                         gry</a></h3>
             </td>
             <td>
-                <h3><a th:href="@{/game_room_finish/}+${room.id}" class="btn btn-primary">Przejdź do listy pokoi, i
+                <h3><a th:href="@{/game_room_finish/}+${room.id}" class="btn btn-primary">Przejdź do listy pokoi i
                         zakończ grę</a></h3>
             </td>
         </tr>
         <tr style="background-color: rgb(203, 105, 114);">
             <td colspan="2">
                 <div>
-                    <b th:text="'PUNKTACJA: '+${currentPlayerPoints}"> </b>
+                    <b th:text="'ZDOBYTE PUNKTY: '+${currentPlayerPoints}"> </b>
                 </div>
             </td>
         </tr>

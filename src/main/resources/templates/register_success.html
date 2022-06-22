@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <meta charset="ISO-8859-1"/>
-    <title>Registration Success</title>
+    <meta charset="ISO-8859-1">
+    <title>Proces rejestracji przebiegł pomyślnie!</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <style>
         body {
@@ -46,9 +45,8 @@
         }
     </style>
 </head>
-
 <body>
-    <p id="naglowek"> Java Vabank</p>
+    <p id="naglowek">Vabank Quiz Java</p>
     <table>
         <tr>
             <th></th>
@@ -56,12 +54,13 @@
         <tr>
             <td>
                 <div class="container text-center">
-                    <h3>You have signed up successfully!</h3>
+                    <h3>Proces rejestracji przebiegł pomyślnie!</h3><br>
+                    <h5>Przekierowanie nastąpi za <span id="counter"> 15 </span> sekund. Kliknij poniżej, aby przejść do strony logowania: </h5>
             </td>
         </tr>
         <tr>
             <td>
-                <a th:href="@{/login}" class="btn btn-primary">Click here to Login</a>
+                <a th:href="@{/login}" class="btn btn-primary">Zaloguj się.</a>
             </td>
         </tr>
         <tr>
@@ -71,6 +70,18 @@
         </tr>
         </div>
     </table>
-</body>
 
+    <script>
+        setInterval(function () {
+            var div = document.querySelector("#counter");
+            var count = div.textContent * 1 - 1;
+            div.textContent = count;
+            if (count <= 0) {
+                document.getElementById("counter").innerHTML = "0";
+                window.location.replace("/login");
+            }
+            
+        }, 1000);
+    </script>
+</body>
 </html>

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="ISO-8859-1">
     <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-
     <style>
         body {
             background-image: url("https://img.freepik.com/free-photo/blue-steam-black-background_172251-548.jpg?w=740");
@@ -49,15 +47,14 @@
         }
     </style>
 </head>
-
 <body>
-    <p id="naglowek"> Java Vabank</p>
+    <p id="naglowek">Vabank Quiz Java</p>
     <div class="container text-center">
         <table>
             <tr style="background-color: rgb(94, 182, 197); color: white;">
                 <th colspan="2">
                     <div>
-                        <h3>User Registration - Sign Up</h3>
+                        <h3>Aby założyć konto, wypełnij poniższe pola.</h3>
                     </div>
                 </th>
             </tr>
@@ -74,7 +71,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-4 col-form-label">Password: </label>
+                                <label class="col-4 col-form-label">Hasło: </label>
                                 <div class="col-8">
                                     <input type="password" th:field="*{password}" class="form-control" required
                                         minlength="6" maxlength="10" />
@@ -82,7 +79,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-4 col-form-label">First Name: </label>
+                                <label class="col-4 col-form-label">Imię: </label>
                                 <div class="col-8">
                                     <input type="text" th:field="*{firstName}" class="form-control" required
                                         minlength="2" maxlength="20" />
@@ -90,7 +87,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-4 col-form-label">Last Name: </label>
+                                <label class="col-4 col-form-label">Nazwisko: </label>
                                 <div class="col-8">
                                     <input type="text" th:field="*{lastName}" class="form-control" required
                                         minlength="2" maxlength="20" />
@@ -99,7 +96,7 @@
             <tr>
                 <td>
                     <div>
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <button type="submit" class="btn btn-primary">Załóż konto.</button>
                     </div>
                 </td>
                 <td>
@@ -119,5 +116,4 @@
 
     </div>
 </body>
-
 </html>

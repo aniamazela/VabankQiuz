@@ -85,25 +85,24 @@
 </head>
 
 <body>
-    <p id="naglowek"> Java Vabank</p>
+    <p id="naglowek">Vabank Quiz Java</p>
 
 
     <div>
-            <!-- <div class="container text-center"> -->
         <table>
             <tr align="center">
                 <td rowspan="3" width="25%"> <br>
-                    <img src="https://pic.onlinewebfonts.com/svg/img_513928.png" width="150" height="105">
+                    <img th:src="@{/images/player.png}" width="150" height="105"/>
                     <div class="first">
                         <h5 th:text="${room.player1Points}"></h5>
                     </div>
                     <div class="second"> 1</div>
                 </td>
                 <td id="kwoty">
-                    <h5 th:text="'Nagroda: ' +${question.priceCategory}"></h5>
+                    <h5 th:text="'Punkty do zdobycia: ' +${question.priceCategory}"></h5>
                 </td>
                 <td rowspan="3" width="25%"> <br>
-                    <img src="https://pic.onlinewebfonts.com/svg/img_513928.png" width="150" height="105">
+                    <img th:src="@{/images/player.png}" width="150" height="105"/>
                     <div class="first">
                         <h5 th:text="${room.player2Points}"></h5>
                     </div>
@@ -119,22 +118,21 @@
                 <td width="40%" style="background-color: rgb(209, 213, 217);">
                     <h3 th:text="${question.questionText}" style="font-weight: bolder; font-style: italic;"></h3>
                     <a th:text="${question.answer1Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/1'"
-                        class="btn btn-primary"></a><br />
-                    <!-- $-blok kodu javowego które się wykonyje @-automatyzuje adres url to co wyświetla sie na górze str www -->
-                        <a th:text="${question.answer2Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/2'"
-                        class="btn btn-primary"></a><br />
+                        id="buttonA" class="btn btn-primary"></a><br />
+                              <!-- $-blok kodu javowego które się wykonyje @-automatyzuje adres url to co wyświetla sie na góże str www -->  
+                    <a th:text="${question.answer2Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/2'"
+                        id="buttonB" class="btn btn-primary"></a><br />
                     <a th:text="${question.answer3Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/3'"
-                        class="btn btn-primary"></a><br />
+                        id="buttonC" class="btn btn-primary"></a><br />
                     <a th:text="${question.answer4Text}" th:href="@{/answer/}+${room.id}+'/'+${question.id}+'/4'"
-                        class="btn btn-primary"></a><br />
+                        id="buttonD" class="btn btn-primary"></a><br />
                 </td>
             </tr>
             <tr>
                 <td id=player>
                     <h6 th:text="${room.player1.fullName}"> </h6>
                 </td>
-                <td id="timmer">
-                    Pozostało czasu do odpowiedzi: <span id="counter">5 </span>
+                <td id="kategoria">
                 </td>
                 <td id=player>
                     <h6 th:text="${room.player2!=null? room.player2.fullName:' '}"> </h6>
@@ -143,18 +141,6 @@
         </table> 
     </div>
 
-    <script>
-        setInterval(function () {
-            var div = document.querySelector("#counter");
-            var count = div.textContent * 1 - 1;
-            div.textContent = count;
-            if (count <= 0) {
-                document.getElementById("counter").innerHTML = "0";
-                document.getElementById("timmer").innerHTML = "CZAS MINĄŁ!"
-                //window.location.replace('/game_room/'+"${room.id}");
-            }
-        }, 1000);
-    </script>
 </body>
 
 </html>
