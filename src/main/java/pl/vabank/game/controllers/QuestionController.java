@@ -29,7 +29,9 @@ public class QuestionController {
     @Autowired // wstrzykiwanie zależności
     private RoomRepository roomRepo;
 
-    // met.szuka wybranego pytania z puli pytan w room
+    /**
+     * met.szuka wybranego pytania z puli pytan w room
+      */
     private Pair<Supplier<Integer>, Consumer<Integer>> findCurrentQuestion(RoomData roomData,
             QuestionsData questionsData) {
         long currentQuesID = questionsData.getId();// pyt.które wybrał user
@@ -123,6 +125,13 @@ public class QuestionController {
         });
     }
 
+    /**
+     * 
+     * @param rid id pokoju
+     * @param qid id pytania
+     * @param model łączy kod Java z html
+     * @return widok "question.html" lub widok "game_room/rid" w przypadku obsługi wyjątku
+     */
     @GetMapping("/question/{rid}/{qid}") // wybiera czyta i blokuje pytanie w room
     public String gameQuestion(@PathVariable Long rid, @PathVariable Long qid, Model model) {
 

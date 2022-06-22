@@ -19,14 +19,36 @@ import pl.vabank.game.data.UserData;
 import pl.vabank.game.CustomUserDetails;
 import pl.vabank.game.access.RoomRepository;
 
+/**
+ * klasa RoomController obsługuje zapytania wysyłane poprzez przeglądarkę od użytkowinków
+ */
 @Controller
 public class RoomController {
-
+/**
+ * inicjacja loggera 
+ * jako parametr metody getLogger przekazano RoomController.class, czyli klasę z której chcemy, aby logi pochodziły.
+ */
     Logger logger = LoggerFactory.getLogger(RoomController.class);
 
+    /**
+     * adnotacja @Autowired wskazuje na wstrzykiwanie zależności poprzez pole
+     */
     @Autowired
     private RoomRepository roomRepo;
 
+/**
+ * adnotacja @GetMapping przyjmuje jako parametr ścieżkę 
+ * w przypadku kiedy żądanie zostanie wysłane na ścieżkę podaną jako parametr w adnotacji @GetMapping
+ * następuje uruchomienie metody gameRoomFinish
+ * 
+ * adnotacja @PathVariable wskazuje, że w przypadku, gdy wysyłamy żądanie 
+ * wartość parametru jest ustawiana bezpośrednio w ścieżce
+ * 
+ * @param id id pokoju
+ * @param model model
+ * 
+ * @return widok "rooms.html" lub widok "wrong_room.html" w przypadku obsługi wyjątku
+ */
     @GetMapping("/game_room_finish/{id}")
     public String gameRoomFinish(@PathVariable("id") Long id, Model model) {
 
@@ -55,6 +77,12 @@ public class RoomController {
       
     }
 
+    /**
+     * 
+     * @param id id pokoju
+     * @param model model
+     * @return widok "game_room.html" lub widok "wrong_room.html" w przypadku obsługi wyjątku
+     */
     @GetMapping("/game_room/{id}")
     public String gameRoom(@PathVariable("id") Long id, Model model) {
 
@@ -139,6 +167,10 @@ public class RoomController {
         return "wrong_room";
     }
 
+    /**
+     * 
+     * metoda calcCacheActive oznacza ActiveQuestion
+     */
     // met oznacza ActiveQuestion
     private void calcCacheActive(int index, Model model, UserData currentUser, RoomData room, int value)
             throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,

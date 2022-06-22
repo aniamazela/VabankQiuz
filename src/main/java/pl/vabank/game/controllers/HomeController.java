@@ -152,17 +152,17 @@ public class HomeController {
                 add(Pair.with("Wątki", 400));
                 add(Pair.with("Wątki", 500));
 
-                add(Pair.with("Podstawowe elementy języka java", 100));
-                add(Pair.with("Podstawowe elementy języka java", 200));
-                add(Pair.with("Podstawowe elementy języka java", 300));
-                add(Pair.with("Podstawowe elementy języka java", 400));
-                add(Pair.with("Podstawowe elementy języka java", 500));
+                add(Pair.with("Podstawowe elementy języka Java", 100));
+                add(Pair.with("Podstawowe elementy języka Java", 200));
+                add(Pair.with("Podstawowe elementy języka Java", 300));
+                add(Pair.with("Podstawowe elementy języka Java", 400));
+                add(Pair.with("Podstawowe elementy języka Java", 500));
 
-                add(Pair.with("java", 100));
-                add(Pair.with("java", 200));
-                add(Pair.with("java", 300));
-                add(Pair.with("java", 400));
-                add(Pair.with("java", 500));
+                add(Pair.with("JavaFX, Swing, AWT", 100));
+                add(Pair.with("JavaFX, Swing, AWT", 200));
+                add(Pair.with("JavaFX, Swing, AWT", 300));
+                add(Pair.with("JavaFX, Swing, AWT", 400));
+                add(Pair.with("JavaFX, Swing, AWT", 500));
             }
         };
 
