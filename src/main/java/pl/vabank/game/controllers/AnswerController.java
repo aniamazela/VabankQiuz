@@ -15,8 +15,15 @@ import pl.vabank.game.data.QuestionsData;
 import pl.vabank.game.data.RoomData;
 import pl.vabank.game.data.UserData;
 /**
- * 
- * Opis klasu co tu sie dzieje 
+ * W klasie AnswerController z adnotacją @Controller obsługiwane są przychodzące żądania HTTP. 
+ * Po otrzymaniu żądania uruchamiana jest metoda answerQuestion, 
+ * na koniec metoda ta zwraca obiekt odpowiedzi http (w tym wypadku: wartość "answer" typu String).
+ * Wartość "answer" jest interpretowana jako logiczna nazwa widoku answer.html.
+ * Podsumowując klasa AnswerController obsługuje żadania użytkownika gry zwjązane z udzielaniem odpowiedzi na pytania. 
+ * Klasa wykorzystuje mechanizm wstrzykiwania zależności z użyciem adnotacji @Autowired, która m.in. umożliwia 
+ * pobieranie id pytania czy id pokoju przy użyciu metod get (getter). 
+
+
 * @author Katarzyna Madalińska
 */
 @Controller
@@ -29,13 +36,27 @@ public class AnswerController {
     private RoomRepository roomRepo;
 
 
-    /**
-     * Jeśli uczestinik odpowie poprawnie przkedayzwana jest mesasge w zaleznosci ... -komentarze
-     * @param rid
-     * @param qid
-     * @param aid
-     * @param model
-     * @return
+ /**
+     * Adnotacja @GetMapping wskazuje na mapowanie żądań, które polega na tym, że dla danego żądania HTTP, 
+     * wybierana jest odpowiednia metoda Java (tj. answerQuestion) w celu obsługi tego żądania. 
+     * Czyli, jeśli użytkownik wysłał na serwer żądanie HTTP za pomocą metody HTTP GET oraz 
+     * zdefiniowaliśmy URL tego żądania, jako: "/answer/{rid}/{qid}/{aid}", to wówczas Spring przechwyci takie żądanie 
+     * i uruchomi metodę answerQuestion.
+     * 
+     * Metoda answerQuestion "analizuje" odpowiedź gracza/użytkownika na pytanie, 
+     * jeśli użytkownik prawidłowo odpowie na pytanie wyświetlana jest wiadomość "Odpowiedź poprawna",
+     * dodatkowo następuje sumowanie dotychczasowych punktów użytkownika z punktami za prawidłową odpowiedź
+     * oraz zapisywanie w bazie danych, powiększonej liczby punktów danego użytkownika.
+     * Natomiast jeśli użytkownik nieprawidłowo odpowie na pytanie wyświetlana jest wiadomość "Odpowiedź niepoprawna. " 
+     * + "Odpowiedź poprawna to:" oraz pobierana jest prawidłowa odpowiedź z bazy danych.
+     * Blok try catch(Exception e)- stanowi zabezpieczenie przed błędami, które mogą wystąpić.
+     * 
+     * @param rid -oznacza id pokoju 
+     * @param qid -oznacza id pytania
+     * @param aid -oznacza id odpowiedzi 
+     * (przy czym Adnotacja @PathVariable jest stosowana, gdy gracz wysyła żądanie ustawiając wartość parametru rid/qid/aid bezpośrednio w ścieżce)
+     * @param model -dot. import org.springframework.ui.Model i łączy kod java z html
+     * @return - wartość "answer"(String), która jest interpretowana jako logiczna nazwa widoku answer.html
      */
     @GetMapping("/answer/{rid}/{qid}/{aid}")
     public String answerQuestion(@PathVariable Long rid, @PathVariable Long qid, @PathVariable Long aid, Model model) {

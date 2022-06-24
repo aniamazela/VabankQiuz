@@ -20,6 +20,15 @@ import pl.vabank.game.data.RoomData;
 import pl.vabank.game.data.UserData;
 import pl.vabank.game.CustomUserDetails;
 
+/**
+ * 
+ * Klasa QuestionController odpowiedzialna jest za, <br> 
+ *- obsługę żądania http i wyświetlanie widoku.html "question",
+ *- metody tej klasy obsługują wybieranie pytań przez gracza i blokowanie wybranych pytań 
+ 
+ * @author Katarzyna Madalińska
+ */
+
 @Controller
 public class QuestionController {
 
@@ -29,9 +38,9 @@ public class QuestionController {
     @Autowired // wstrzykiwanie zależności
     private RoomRepository roomRepo;
 
-    /**
-     * met.szuka wybranego pytania z puli pytan w room
-      */
+   
+     // met.szuka wybranego pytania z puli pytan w room
+      
     private Pair<Supplier<Integer>, Consumer<Integer>> findCurrentQuestion(RoomData roomData,
             QuestionsData questionsData) {
         long currentQuesID = questionsData.getId();// pyt.które wybrał user

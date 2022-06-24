@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--@author A.Mazela -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Strona logowania</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/free-photo/blue-steam-black-background_172251-548.jpg?w=740");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #naglowek {
+            font-family: "Lucida Handwriting", "Brush Script MT", cursive;
+            font-weight: bold;
+            font-size: 36px;
+            color: white;
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 725px;
+            background-color: white;
+            border: 12px solid goldenrod;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background-color: grey !important;
+            width: 200px;
+            border-color: darkgray;
+            border-radius: 15px !important;
+            margin: 3px;
+        }
+
+        h3 {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        h5{
+            color:red;
+            font-weight: bold;
+        }
+        </style>
+
+</head>
+
+<body>
+    <p id="naglowek">Vabank Quiz Java</p>
+    <div class="container text-center">
+    <table>
+        <tr style="background-color: rgb(94, 182, 197); color: white;">
+            <th colspan="2">
+                <div>
+                    <h3>Strona logowania</h3>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <td colspan="2"></br>
+
+                <form method="POST" th:action="@{/login}" id="loginForm" style="max-width: 600px; margin: 0 auto;">
+                    <div class="container">
+                    <label for="email"><b>Email:</b></label>
+                    <input type="text" name="email" id="email" placeholder="Wprowadź e-mail" class="form-control" required/><br>
+                    <label for="password"><b>Hasło:</b></label>
+                    <input type="password" name="password" id="password" placeholder="Wprowadź hasło" class="form-control" required/><br>
+                    </br></td> </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Zaloguj się.</button>
+                            </form>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <a th:href="@{/}" class="btn btn-primary">Wróć do strony głównej.</a>
+                            </div>
+                        </td>
+                    </tr>
+<tr>
+    <td colspan="2">
+        <div th:if="${param.error}">
+            <h5>Wprowadzono nieprawidłowe dane.</h5>
+        </div>
+    </td>
+</tr>
+            
+    </table>
+</div>
+
+
+</body>
+
+</html>

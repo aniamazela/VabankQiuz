@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--@author A.Mazela -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>O grze</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+body {
+            background-image: url("https://img.freepik.com/free-photo/blue-steam-black-background_172251-548.jpg?w=740");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #naglowek {
+            font-family: "Lucida Handwriting", "Brush Script MT", cursive;
+            font-weight: bold;
+            font-size: 36px;
+            color: white;
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 725px;
+            background-color: white;
+            border: 12px solid goldenrod;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background-color: grey !important;
+            width: 350px;
+            border-color: darkgray;
+            border-radius: 15px;
+            margin: 3px;
+        }
+
+        a:link {
+            text-decoration: none !important;
+        }
+
+        h3 {
+            font-style: itc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <p id="naglowek">Vabank Quiz Java</p>
+
+    <table>
+        <tr align="center" style="background-color: rgb(94, 182, 197); color: white; ">
+            <td>
+                    <h3>O Vabank Quiz Java</h3> 
+            </td>
+        </tr>
+        <tr align="center"><td><br>
+            &#8226; Vabank Quiz Java to gra składająca się z jednego etapu.<br>
+            &#8226; Jest ona dostępna jedynie dla zarejestrowanych użytkowników.<br>
+            &#8226; Po zalogowaniu się gracz może założyć własny pokój <br>
+            lub dołączyć do istniejącego pokoju.<br>
+            &#8226; W każdym pokoju może przebywać maksymalnie 2 graczy.<br>
+            &#8226; Możliwa jest gra dla 1 lub 2 osób.<br>
+            &#8226; Jako pierwszy pytanie wybiera zawsze gracz, który założył pokój.  <br>
+            &#8226; Do wyboru są pytania spośród 5 kategorii związanych z wiedzą nt.Javy <br>
+                    za określoną stawkę (100, 200, 300, 400, 500).<br>
+            &#8226; W przypadku poprawnej odpowiedzi gracz otrzymuje punkty. <br>
+            &#8226; Natomiast w przypadku błędnej odpowiedzi gracz otrzymuje 0 punktów.<br>
+            &#8226; Gra kończy się w momencie odsłonięcia wszystkich pól <br>
+                    lub gdy jeden z graczy kliknie przycisk zakończenia gry.<br>
+            &#8226; Wygrywa gracz, który zdobył więcej punktów.  <br><br>
+        </td></tr>
+        <tr align="center">
+            <td>
+                <a th:href="@{/}" class="btn btn-primary" >Wróć do strony głównej.</a><br>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -28,15 +28,18 @@ import pl.vabank.game.data.UserData;
 
 /**
  * 
- * Opis klasu co tu sie dzieje 
- * @author Katarzyna Madalińska <br> 
- *
- * 
- * 
- *Cały moduł odpowiedzialny jest kolejno za <br> 
- *- rejestracje użtowników showRegistrationForm <br>
- *- login
+ * Klasa HomeController odpowiedzialna jest za, <br> 
+ *- rejestracje użytkowników (metoda showRegistrationForm wyświetla formularz rejestracji użytkownika); <br>
+ *- metoda processRegister przetwarza rejestrację i zapisuje użytkownika w bazie, <br>
+ *- używamy BCryptPasswordEncoder do zakodowania hasła użytkownika, aby samo hasło nie było przechowywane w bazie, <br>
+ *- metoda listUsers zwraca widok.html "users" zawierający listą wszystkich użytkowników, utworzoną za pomocą metody findAll(),<br>
+ *- metoda listRooms zwraca widok.html "rooms" zawierający listą wszystkich pokoi, utworzoną za pomocą metody findAll(),<br>
+ *- lista pokoi jest posortowana, a pokoje mają określony status informujący, czy pokój jest aktywny;<br>
+ *- metoda createRoom tworzy kolejny pokój zawierający 25 wylosowanych pytań i zapisuje pokój w bazie;
+ 
+ * @author Katarzyna Madalińska
  */
+
 @Controller
 public class HomeController {
     @Autowired

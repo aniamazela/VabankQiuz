@@ -23,6 +23,6 @@ public class IndexControllerTest {
 	@Test
 	public void shouldReturnDefaultMessage() throws Exception {
 		this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
-				.andExpect(content().string(containsString("Welcome to Java Game")));
+				.andExpect(content().string(containsString("Witaj w Vabank Quiz Java!")));
 	}
 }
