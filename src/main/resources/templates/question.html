@@ -3,57 +3,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta http-equiv="refresh" content="10">
     <meta charset="ISO-8859-1">
     <title>Question</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<!---->
-<script language=javascript>
-    // tworzymy zmienna
-    var object = false;
-     
-    // tworzymy obiekt XMLHttpRequest (dla IE jest troche inaczej, stad funkcja warunkowa)
-    if (window.XMLHttpRequest) object = new XMLHttpRequest();
-    else if (window.ActiveXObject) object = new ActiveXObject("Microsoft.XMLHTTP");
-     
-    // ponizsza funkcja pobiera dane ze wskazanego zrodla (pliku lub skryptu php) do wskazanego 
-    // DIVa poprzez obiekt XMLHttpRequest    
-    function getData(dataSource, divID)
-    {
-        // kontynuuje wylacznie gdy obiekt nie jest zajety
-        if (object.readyState==4 || object.readyState==0) 
-        {
-            // tworzy zmienna odpowiadajaca konkretnemu obiektowi na stronie
-            var obj = document.getElementById(divID);
-     
-            // czyta z pliku lub wykonuje skrypt
-            object.open("GET", dataSource);
-     
-            // definiuje metode obslugi odpowiedzi serwera
-            object.onreadystatechange = function()
-            {
-                // kontynuuje jesli transmisja zostala zakonczona powodzeniem
-                if (object.readyState == 4 && object.status == 200) 
-                obj.innerHTML= object.responseText;
-            }
-            // wysyla zadanie do serwera
-             object.send(null);
-          }
-    }
-     
-    // w ponizszej funkcji wywolujemy funkcje getData z odpowiednimi parametrami
-    // oraz wywolujemy ja sama rekurencyjnie po co okreslony czas (w naszym wypadku 1000 ms)
-    function odswiezaj()
-    {
-          getData('ajax.php','mojDIVIK');
-          setTimeout("odswiezaj()", 1000);
-    }
-     
-    </script>
-
-<!---->
     <style>
         body {
             background-image: url("https://img.freepik.com/free-photo/blue-steam-black-background_172251-548.jpg?w=740");
@@ -133,9 +87,7 @@
 
 <body>
     <p id="naglowek">Vabank Quiz Java</p>
-
-
-    <div id="mojDIVIK">
+    <div>
         <table>
             <tr align="center">
                 <td rowspan="3" width="25%"> <br>
@@ -189,10 +141,7 @@
     </div>
 
 
-    
-    <script language=javascript>
-        odswiezaj();
-        </script>
+
 </body>
 
 </html>
