@@ -26,7 +26,7 @@
                 var obj = document.getElementById(divID);
          
                 
-                object.open("GET", dataSource);
+                object.open("POST", dataSource);
          
                 
                 object.onreadystatechange = function()
@@ -42,7 +42,7 @@
          
         function odswiezaj()
         {
-              getData('ajax.php','mojDIVIK');
+              getData('game_room.html','mojDIVIK');
               setTimeout("odswiezaj()", 1000);
         }
          
