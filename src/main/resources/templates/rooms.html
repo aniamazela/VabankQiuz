@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
     <style>
         body {
             background-image: url("https://img.freepik.com/free-photo/blue-steam-black-background_172251-548.jpg?w=740");
@@ -105,7 +106,7 @@
                                     <td th:text="${room.player2!=null? room.player2.fullName:' '}">Gracz nr 2</td>
                                     <td th:text="${room.player2Points}">Punkty gracza nr 2</td>
                                     <td><a th:href="@{/game_room/}+${room.id}"
-                                            th:class="${roomsStatus[stat.index]==true?'':'question-disable'}" onclick="document.location.reload(true)">Dołącz do gry</a>
+                                            th:class="${roomsStatus[stat.index]==true?'':'question-disable'}">Dołącz do gry</a>
                                     </td>
                                 </tr>
 
@@ -120,7 +121,7 @@
             <div>
                 <form th:action="@{/logout}" method="post">
                     <td>
-                        <a th:href="@{/create_room}" class="btn btn-primary">Utwórz nowy pokój.</a>
+                        <a th:href="@{/create_room}" class="btn btn-primary" onClick="window.location.reload()">Utwórz nowy pokój.</a>
                     </td>
                     <td> <input type="submit" value="Wyloguj się." class="btn btn-primary" /></td>
                 </form>

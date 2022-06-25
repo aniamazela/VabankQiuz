@@ -8,45 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-      
-        var object = false;
-         
-      
-        if (window.XMLHttpRequest) object = new XMLHttpRequest();
-        else if (window.ActiveXObject) object = new ActiveXObject("Microsoft.XMLHTTP");
-         
-      
-        function getData(dataSource, divID)
-        {
-            
-            if (object.readyState==4 || object.readyState==0) 
-            {
-                
-                var obj = document.getElementById(divID);
-         
-                
-                object.open("GET", dataSource);
-         
-                
-                object.onreadystatechange = function()
-                {
-                    
-                    if (object.readyState == 4 && object.status == 200) 
-                    obj.innerHTML= object.responseText;
-                }
-
-                 object.send(null);
-              }
-        }
-         
-        function odswiezaj()
-        {
-              getData('game_room.html','mojDIVIK');
-              setTimeout("odswiezaj()", 1000);
-        }
-         
-        </script>
+    <meta http-equiv="refresh" content="10">
     <style>
         body {
             background-image: url("https://img.freepik.com/free-photo/blue-steam-black-background_172251-548.jpg?w=740");
@@ -96,7 +58,6 @@
 
 <body>
     <p id="naglowek">Vabank Quiz Java</p>
-    <div id="mojDIVIK">
     <table>
         <tr style="background-color: rgb(94, 182, 197); color: white;">
             <th colspan="2">
@@ -229,10 +190,6 @@
             </td>
         </tr>
     </table>
-</div>
-    <script>
-        odswiezaj();
-        </script>
 </body>
 
 </html>
